@@ -1,9 +1,19 @@
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Aunty Co's Kitchen - Delicious homemade meals, African cuisine, and catering services in Cameroon.">
+<meta name="keywords" content="restaurant Cameroon, food, African cuisine, Aunty Co's Kitchen, meals, catering">
+<meta name="author" content="Aunty Co's Kitchen">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUNTY CO'S KITCHEN - Home Cooked Meals with Love</title>
+    
+    <title>Aunty Co's Kitchen | Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">

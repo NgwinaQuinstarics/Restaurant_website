@@ -1,21 +1,28 @@
 <?php
-// gallery.php
-require_once 'includes/db.php'; // adjust path if needed
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-try {
-    // Try to fetch images uploaded in the last 7 days
-    $stmt = $pdo->prepare("SELECT * FROM gallery_images WHERE upload_date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK) ORDER BY created_at DESC");
-    $stmt->execute();
-    $galleryImages = $stmt->fetchAll();
+$host = "sql300.infinityfree.com";
+$user = "if0_41686621";
+$password = "7moz3EZZUH";
+$dbname = "if0_41686621_aunty_cos_kitchen";
 
-    // If no images uploaded in the last week, fetch the most recent ones
-    if (empty($galleryImages)) {
-        $stmt = $pdo->prepare("SELECT * FROM gallery_images ORDER BY created_at DESC LIMIT 9"); // show latest 9 images
-        $stmt->execute();
-        $galleryImages = $stmt->fetchAll();
+$conn = mysqli_connect($host, $user, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch gallery images
+$sql = "SELECT * FROM gallery_images ORDER BY created_at DESC LIMIT 9";
+$result = mysqli_query($conn, $sql);
+
+$galleryImages = [];
+
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $galleryImages[] = $row;
     }
-} catch (PDOException $e) {
-    $galleryImages = [];
 }
 ?>
 <!DOCTYPE html>
@@ -31,6 +38,10 @@ try {
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
         
+    <meta name="description" content="Aunty Co's Kitchen - Delicious homemade meals, African cuisine, and catering services in Cameroon.">
+    <meta name="keywords" content="restaurant Cameroon, food, African cuisine, Aunty Co's Kitchen, meals, catering">
+    <meta name="author" content="Aunty Co's Kitchen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
             --primary-color: #d4a574;
